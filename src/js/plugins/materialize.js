@@ -5,22 +5,30 @@ import 'materialize-css/dist/js/materialize.min.js';
 const selects = document.querySelectorAll('select');
 M.FormSelect.init(selects);
 
-export function getSelectInstance(elem) {
-  return M.FormSelect.getInstance(elem);
+export function getSelectInstance(elem)
+{
+	return M.FormSelect.getInstance(elem);
 }
 
 // Init Autocomplete
 const allAutocomplete = document.querySelectorAll('.autocomplete');
 M.Autocomplete.init(allAutocomplete);
 
-export function getAutocompleteInstance(elem) {
-  return M.Autocomplete.getInstance(elem);
+export function getAutocompleteInstance(elem)
+{
+	return M.Autocomplete.getInstance(elem);
 }
 
 // Init Datepicker
 const datepickers = document.querySelectorAll('.datepicker');
-M.Datepicker.init(datepickers);
+M.Datepicker.init(datepickers,
+	{
+		showClearBtn: true,
+		format: 'yyyy-mm'
+	})
 
-export function getDatePickerInstance(elem) {
-  return M.Datepicker.getInstance(elem);
+
+export function getDatePickerInstance(elem)
+{
+	return M.Datepicker.getInstance(elem);
 }

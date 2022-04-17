@@ -9,20 +9,42 @@ class FormUi
 		this.destination = document.getElementById('autocomplete-destination');
 		this.depart = document.getElementById('datepicker-depart');
 		this.return = document.getElementById('datepicker-return');
-		this.originAutocoplite = autocompleteInstance(this.origin);
-		this.destinationAutocomplit = autocompleteInstance(this.destination);
+		this.originAutocomplete = autocompleteInstance(this.origin);
+		this.destinationAutocomplete = autocompleteInstance(this.destination);
 		this.departDatePicker = datePickerInstance(this.depart);
-		this.departDatePicker = datePickerInstance(this.return);
+		this.returnDatePicker = datePickerInstance(this.return);
 	}
 
 	get formUI()
 	{
-		return this.$form;
+		return this._form;
 	}
+
+	//получение данных из инпутов
+	get originValue()
+	{
+		return this.origin.value;
+	}
+
+	get destinationValue()
+	{
+		return this.destination.value;
+	}
+
+	get departDateValue()
+	{
+		return this.departDatePicker.toString();
+	}
+
+	get returnDateValue()
+	{
+		return this.returnDatePicker.toString();
+	}
+
 	setAutocompleteData(data)
 	{
-		this.originAutocoplite.updateData(data);
-		this.destinationAutocomplit.updateData(data);
+		this.originAutocomplete.updateData(data);
+		this.destinationAutocomplete.updateData(data);
 	}
 }
 
