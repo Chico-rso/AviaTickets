@@ -1,53 +1,49 @@
-import {getDatePickerInstance, getAutocompleteInstance} from '../plugins/materialize';
+import {
+  getAutocompleteInstance,
+  getDatePickerInstance,
+} from '../plugins/materialize';
 
-class FormUi
-{
-	constructor(datePickerInstance, autocompleteInstance)
-	{
-		this._form = document.forms["locationsContol"];
-		this.origin = document.getElementById('autocomplete-origin');
-		this.destination = document.getElementById('autocomplete-destination');
-		this.depart = document.getElementById('datepicker-depart');
-		this.return = document.getElementById('datepicker-return');
-		this.originAutocomplete = autocompleteInstance(this.origin);
-		this.destinationAutocomplete = autocompleteInstance(this.destination);
-		this.departDatePicker = datePickerInstance(this.depart);
-		this.returnDatePicker = datePickerInstance(this.return);
-	}
+class FormUI {
+  constructor(autocompleteInstance, datePickerInstance) {
+    this.$form = document.forms['locationControls'];
+    this.origin = document.getElementById('autocomplete-origin');
+    this.originAutocomplete = autocompleteInstance(this.origin);
+    this.destination = document.getElementById('autocomplete-destination');
+    this.destinationAutocomplete = autocompleteInstance(this.destination);
+    this.depart = datePickerInstance(
+      document.getElementById('datepicker-depart'),
+    );
+    this.return = datePickerInstance(
+      document.getElementById('datepicker-return'),
+    );
+  }
 
-	get formUI()
-	{
-		return this._form;
-	}
+  get form() {
+    return this.$form;
+  }
 
-	//получение данных из инпутов
-	get originValue()
-	{
-		return this.origin.value;
-	}
+  get originValue() {
+    return this.origin.value;
+  }
 
-	get destinationValue()
-	{
-		return this.destination.value;
-	}
+  get destinationValue() {
+    return this.destination.value;
+  }
 
-	get departDateValue()
-	{
-		return this.departDatePicker.toString();
-	}
+  get departDateValue() {
+    return this.depart.toString();
+  }
 
-	get returnDateValue()
-	{
-		return this.returnDatePicker.toString();
-	}
+  get returnDateValue() {
+    return this.return.toString();
+  }
 
-	setAutocompleteData(data)
-	{
-		this.originAutocomplete.updateData(data);
-		this.destinationAutocomplete.updateData(data);
-	}
+  setAutocompleteData(data) {
+    this.originAutocomplete.updateData(data);
+    this.destinationAutocomplete.updateData(data);
+  }
 }
 
-const FormUI = new FormUi(getDatePickerInstance, getAutocompleteInstance);
+const formUI = new FormUI(getAutocompleteInstance, getDatePickerInstance);
 
-export default FormUI;
+export default formUI;
